@@ -1,0 +1,10 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.navBarStyle{
+  background-color: #0F2D56;
+  font-size: large;
+  font-family: 'Roboto'; 
+}
