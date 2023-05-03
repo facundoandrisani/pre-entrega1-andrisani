@@ -1,15 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
-import { Navbar } from './components/Navbar/Navbar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 
 function App() {
   return (
     <div>
-      <Navbar></Navbar>
-      <ItemListContainer greeting={'Bienvenidos a mi proyeto 1. FA'}></ItemListContainer>
+      <ItemListContainer greeting={'Bienvenidos a mi proyecto PT 2. FA'}/>
     </div>
   );
 }
 
 export default App;
+
+//Luego en App se le agregará Ofertas y mas opciones para diferenciarlo de ItemListContainer
