@@ -1,22 +1,45 @@
 import { useEffect, useState } from 'react'
+import { getFirestore, collection, getDocs} from 'firebase/firestore'
 import { ItemModel } from '../ItemModel/ItemModel'
-import { allProducts } from '../../asyncMock'
 
 export const ItemList = () => {
   
-  const [Products, setProducts] = useState([]) 
-
-    
+  const db = getFirestore()
+  const [products, setProducts] = useState([])
+  
   useEffect(() => {
-    allProducts(setProducts)
-  }, [])
-    
+    const productsDB = collection(db, 'items')
+  
+    getDocs(productsDB)
+    .then( products => {
+      setProducts(products.docs.map( doc => ({id: doc.id ,...doc.data()} ) ))
+    } )
+
+  }, [db])
+  
+  
+
+
   return (
-    <div class='d-flex flex-wrap justify-content-evenly'>
+    <>
+    {
+    products.length
+    ?
+    <>
+    <ul>
+      {
+        <div class='d-flex flex-wrap justify-content-evenly'>
         {
-          Products.map( (product) => <ItemModel key={product.id} title={product.title} image={product.image} price={product.price} category={product.category}
-          id={product.id}></ItemModel>)
+          products.map( (product) => <ItemModel key={product.id} name={product.name} img={product.img} price={product.price} description={product.description}
+          stock={product.stock} id={product.id}></ItemModel>)
         }
-    </div>
+        </div>
+      }
+    </ul>
+    </>
+    :
+    <h3>Cargando...</h3>
+    }
+    </>
   )
 }

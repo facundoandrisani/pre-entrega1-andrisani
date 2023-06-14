@@ -4,7 +4,7 @@ import { ItemListContainer } from './components/ItemListContainer/ItemListContai
 function App() {
   return (
     <div>
-      <ItemListContainer greeting={'Bienvenidos a mi proyecto PT 2. FA'}/>
+      <ItemListContainer greeting={'Bienvenidos a mi proyecto FA'}/>
     </div>
   );
 }

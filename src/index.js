@@ -7,19 +7,26 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 import { ItemByCategories } from './components/ItemByCategories/ItemByCategories';
 import { ProductDetail } from './components/ProductDetail/ProductDetail';
-
+import { CartProvider } from './context/CartContext'
+import { Cart } from './components/Cart/Cart';
+import { Checkout } from './components/Checkout/Checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <React.StrictMode>
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<App/>} /> 
-      <Route path='/products' element={<ItemListContainer greeting={"Todos los productos"} />} />
-      <Route path='/category/:category' element={<ItemByCategories/>} />
-      <Route path='/products/:id' element={<ProductDetail/>}/>
-      <Route path='*' element={< h2>404 ERROR</h2> } />
-    </Routes>
+      <CartProvider>
+          <Routes>
+            <Route path='/' element={<App/>} /> 
+            <Route path='/products' element={<ItemListContainer greeting={"Todos los productos"} />} />
+            <Route path='/description/:productDescription' element={<ItemByCategories/>} />
+            <Route path='/products/:productId' element={<ProductDetail/>}/>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
+            <Route path='*' element={< h2>404 ERROR</h2> } />
+          </Routes>
+      </CartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

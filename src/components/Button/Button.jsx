@@ -3,17 +3,17 @@ import { useState } from 'react'
 
 export const Button = ({stock, inicio, OnAddition}) => {
 
-  const [cantidad, setCantidad] = useState(inicio) 
+  const [quantity, setQuantity] = useState(inicio) 
   
   const incrementa = () => {
-    if (cantidad < stock) {
-        setCantidad(cantidad + 1)
+    if (quantity < stock) {
+        setQuantity(quantity + 1)
     }      
   }
 
   const decrementa = () => {
-    if (cantidad > 1) {
-        setCantidad(cantidad - 1)
+    if (quantity > 1) {
+        setQuantity(quantity - 1)
     }      
   }
 
@@ -21,13 +21,12 @@ export const Button = ({stock, inicio, OnAddition}) => {
     <>
     <div class="d-flex justify-content-evenly">
         <button className='boton-azul' onClick={decrementa}> - </button>
-        <h4>{cantidad}</h4>
+        <h4>{quantity}</h4>
         <button className='boton-azul'onClick={incrementa}> + </button>
     </div>
     <div>
-        <button className='boton-azul' onClick={() => OnAddition(cantidad)} disabled={!stock}>Agregar al carrito</button>
+        <button className='boton-azul' onClick={() => OnAddition(quantity)} disabled={!stock}>Agregar al carrito</button>
     </div>
     </>
   )
 }
-

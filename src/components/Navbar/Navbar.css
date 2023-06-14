@@ -1,0 +1,14 @@
+.navBarColour{
+    background-color: #0F2D56;
+    font-size: large;
+    font-family: 'Roboto';
+}
+
+.navBarSection{
+    text-decoration: none;
+    color: white;
+}
+
+.ActiveOption{
+    color: #F7A505;
+}
